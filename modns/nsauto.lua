@@ -1,11 +1,12 @@
 -- helpers to create a parent namespace which is simply a table housing sub-namespaces.
 local mk_helpers = function(loader)
+	local modpath = minetest.get_modpath("modns")
 
 
 
 -- manual and automatic capture subloaders
-local create_subloader = (dofile(_modpath.."subloader.lua"))(loader)
-local p = _modpath.."subloader_child_modules.lua"
+local create_subloader = (dofile(modpath.."/subloader.lua"))(loader)
+local p = modpath.."/subloader_child_modules.lua"
 local get_child_subloader = (dofile(p))(loader, create_subloader)
 
 
